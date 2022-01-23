@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { customAlphabet } from 'nanoid';
 import { UserDocument } from './user.model';
 
@@ -10,11 +10,12 @@ export interface ProductDocument extends mongoose.Document {
   description: string;
   price: number;
   image: string;
+  productId?: string,
   createdAt: Date;
   updatedAt: Date;
 }
 
-const ProductSchema = new mongoose.Schema(
+const ProductSchema = new mongoose.Schema<ProductDocument, Model<UserDocument>>(
   {
     productId: {
       type: String,

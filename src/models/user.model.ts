@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, {Model} from 'mongoose';
 import bcrypt from 'bcrypt';
 import config from 'config';
 import logger from '../utils/logger';
@@ -12,7 +12,7 @@ export interface UserDocument extends mongoose.Document {
   comparePassword(password: string): Promise<boolean>;
 }
 
-const UserSchema = new mongoose.Schema(
+const UserSchema = new mongoose.Schema<UserDocument, Model<UserDocument>>(
   {
     email: {
       type: String,

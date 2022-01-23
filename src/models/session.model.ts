@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import mongoose, { Model } from 'mongoose';
 import { UserDocument } from './user.model';
 
 export interface SessionDocument extends mongoose.Document {
@@ -9,7 +9,7 @@ export interface SessionDocument extends mongoose.Document {
   updatedAt: Date;
 }
 
-const SessionSchema = new mongoose.Schema(
+const SessionSchema = new mongoose.Schema<SessionDocument, Model<SessionDocument>>(
   {
     user: {
       type: mongoose.Schema.Types.ObjectId,
